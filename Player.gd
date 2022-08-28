@@ -5,17 +5,16 @@ var currentTarget : int = 0
 var targetsCount : int
 var initalCheck : int = 1
 
+var HUD : CanvasLayer
+
 func _ready():
 	pass
-	#TODO - We have to find a way to tell the canvas layer that we are moving
-	#TODO - this is to update the text label
-	#TODO - I think we can do this by calling a function from here that goes to the Root.gd
-	#TODO - then that function calls a function from there into the canvas layer
-	
-	#get_parent().connect_to_HUD()
-	#FIXME - Nope, dont do any of that crap above, figure out how to make this work better
-	get_parent().get_child(0).update_labels()
-	
+
+	#Get the correct node by using a clever get children method
+	for child in get_parent().get_children():
+		if child is CanvasLayer:
+			HUD = get_parent().get_child(child.get_index())
+			break
 
 #When using KinematicBody2D you should use _physics_process
 #It's called the same amount of times per second, always. 
@@ -41,6 +40,8 @@ func _physics_process(delta):
 		var tween = get_node("Tween")
 		tween.interpolate_property(self, "position", position, rotationTargets[currentTarget].get_global_position(), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
 		tween.start()
+		print((position.x + rotationTargets[currentTarget].get_global_position().x) + (position.y + rotationTargets[currentTarget].get_global_position().y))
+		HUD.update_movement_points((position.x + rotationTargets[currentTarget].get_global_position().x) + (position.y + rotationTargets[currentTarget].get_global_position().y))
 
 func _on_Area2D_area_entered(area):
 	rotationTargets.clear()

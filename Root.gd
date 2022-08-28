@@ -7,9 +7,10 @@ onready var expts = $CanvasLayer/experiencePts
 
 var col = Color(255,255,255)
 var extraChildren : int = 2
+var font
 
-func connect_to_HUD():
-	$CanvasLayer.update_labels()
+#TODO - Delete this temp var when we are done labeling the tree
+var labelCheck : int = 0
 
 # Called when the node enters the scene tree for the first time.
 # So far, this is only ever called once
@@ -22,6 +23,11 @@ func _ready():
 	#print("Line Pairings: ", linePairs)
 	#print()
 	#print("Visited: ", visited)
+	
+	var label = Label.new()
+	font = label.get_font("")
+	label.queue_free()
+	
 	_draw()
 
 #This function's purpose is to preform a depth first search on the skill tree I have set up and do a couple things:
@@ -69,22 +75,32 @@ func visitTree():
 					currentNode = child.get_parent()
 					visitTree()
 
-#_draw is called after ready automatically
-
+#_draw is called after ready automatically so we need this check statement
 var linePairs : Array #used to understand what nodes connect and to where
 var check : bool = false
 func _draw():
 	var source : int = 0
 	var dest : int = 1
+	
+	var xVect : float
+	var yVect : float
+	var compVect : Vector2
+	var distVect : float
+	
 	if check == false:
 		check = true
 		return
 	else:
-		#Because parents and children have an interesting connection when it comes to position data
-		#it is required that the source and dest position be added together
 		for times in (linePairs.size() / 2):
-			#print("Drawing from ", linePairs[source].name, " at position ", linePairs[source].get_global_position(), " ***** to ", linePairs[dest].name, " at position ", linePairs[dest].get_global_position())
 			draw_line(linePairs[source].get_global_position(), linePairs[dest].get_global_position(), col, 2)
+			
+			#TODO - Something weird is going on here, but it is working to my benefit, but it also eventually needs to be fixed or at least understood
+			xVect = (linePairs[source].get_global_position().x + linePairs[dest].get_global_position().x) / 2
+			yVect = (linePairs[source].get_global_position().y + linePairs[dest].get_global_position().y) / 2
+			compVect = Vector2(xVect, yVect)
+			distVect = abs(linePairs[source].get_global_position().x) + abs(linePairs[dest].get_global_position().x) + abs(linePairs[source].get_global_position().y) + abs(linePairs[dest].get_global_position().y)
+			draw_string(font, compVect, str(distVect))
+			
 			source += 2
 			dest += 2
 
