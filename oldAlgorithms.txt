@@ -1,3 +1,5 @@
+#This is a slightly outdated version of visitTree() containted in the SkillTree.gd script.
+#Im saving this because it still has the print statements so if I ever forget how it works I can check this out
 func visitTree():
 	print("---------------------------------------")
 	print("CurrentNode: ", currentNode.name)
@@ -36,3 +38,60 @@ func visitTree():
 					print("         There are no other children to check")
 					#currentNode = child.get_parent()
 					visitTree()
+
+#This is the old drawLines.gd
+#######################################################################################
+var treeData : Array
+var colorLines = Color(255,255,255)
+
+func _ready():
+	update()
+
+func _draw():
+	if treeData.empty():
+		return
+	
+	print("drawing lines")
+	var source : int = 0
+	var dest : int = 1
+	
+	for times in (treeData.size() / 2):
+		draw_line(treeData[source].get_global_position(), treeData[dest].get_global_position(), colorLines, 4)
+		source += 2
+		dest += 2
+	
+	emit_signal("treeData", treeData)
+
+#This is the old draw strings
+#######################################################################
+var treeData : Array
+var font
+var colorText = Color(0,0,0)
+
+func _ready():
+	font = Label.new().get_font("")
+	update()
+
+func _draw():
+	if treeData.empty():
+		return
+	
+	print("Drawing strings")
+	var source : int = 0
+	var dest : int = 1
+
+	var xVect : float
+	var yVect : float
+	var compVect : Vector2
+	var distVect : float
+
+	for times in (treeData.size() / 2):
+		#TODO - Something weird is going on here, but it is working to my benefit, but it also eventually needs to be fixed or at least understood
+		xVect = (treeData[source].get_global_position().x + treeData[dest].get_global_position().x) / 2
+		yVect = (treeData[source].get_global_position().y + treeData[dest].get_global_position().y) / 2
+		compVect = Vector2(xVect, yVect)
+		distVect = abs(treeData[source].get_global_position().x) + abs(treeData[dest].get_global_position().x) + abs(treeData[source].get_global_position().y) + abs(treeData[dest].get_global_position().y)
+		draw_string(font, compVect, str(distVect), colorText)
+		
+		source += 2
+		dest += 2

@@ -33,15 +33,15 @@ func _physics_process(_delta):
 				currentTarget = 0
 			else:
 				currentTarget += 1
-		print("Current target: ", currentTarget, rotationTargets[currentTarget].get_global_position())
+		#print("Current target: ", currentTarget, rotationTargets[currentTarget].get_global_position())
 		look_at(rotationTargets[currentTarget].get_global_position())
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var tween = get_node("Tween")
 		tween.interpolate_property(self, "position", position, rotationTargets[currentTarget].get_global_position(), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
 		tween.start()
-		print((position.x + rotationTargets[currentTarget].get_global_position().x) + (position.y + rotationTargets[currentTarget].get_global_position().y))
-		HUD.update_movement_points((position.x + rotationTargets[currentTarget].get_global_position().x) + (position.y + rotationTargets[currentTarget].get_global_position().y))
+		print(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
+		HUD.update_movement_points(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
 
 func _on_Area2D_area_entered(area):
 	rotationTargets.clear()
@@ -55,6 +55,6 @@ func _on_Area2D_area_entered(area):
 	
 	currentTarget = 0
 	targetsCount = rotationTargets.size()
-	print(rotationTargets)
+	#print(rotationTargets)
 	look_at(rotationTargets[currentTarget].get_global_position())
 	initalCheck = 0
