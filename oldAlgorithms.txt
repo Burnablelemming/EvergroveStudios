@@ -1,0 +1,38 @@
+func visitTree():
+	print("---------------------------------------")
+	print("CurrentNode: ", currentNode.name)
+	for child in currentNode.get_children():
+		if child is Area2D:
+			children.append(child)
+	for child in children:
+		if visited.has(child):
+			print("   Node ", child, " has been visited before")
+			if children.find(child) == children.size() - 1:
+				if currentNode == start:
+					print("All nodes in the tree have been documented - EXIT NOW")
+					children.clear()
+					return
+				print("   Every child of the current node have been visited")
+				print("   Setting the current node to the parent of the current node")
+				children.clear()
+				currentNode = child.get_parent().get_parent()
+				visitTree()
+		else:
+			print("   Selected node: ", currentNode.name, " and current child: ", child.name)
+			visited.append(child)
+			if child.get_child_count() > extraChildren:
+				linePairs.append(currentNode)
+				linePairs.append(child)
+				print("      Child: ", child.name, " has an Area2D child - setting it as currentNode")
+				children.clear()
+				currentNode = child
+				visitTree()
+			else:
+				print("      Child: ", child.name, " was a leaf node")
+				linePairs.append(currentNode)
+				linePairs.append(child)
+				if children.find(child) == children.size() - 1:
+					children.clear()
+					print("         There are no other children to check")
+					#currentNode = child.get_parent()
+					visitTree()

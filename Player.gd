@@ -19,7 +19,7 @@ func _ready():
 #When using KinematicBody2D you should use _physics_process
 #It's called the same amount of times per second, always. 
 #This makes physics and motion calculation work in a more predictable way
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_right"):
 		if targetsCount == 1:
 			currentTarget = 0
