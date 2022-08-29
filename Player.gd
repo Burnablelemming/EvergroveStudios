@@ -40,8 +40,8 @@ func _physics_process(_delta):
 		var tween = get_node("Tween")
 		tween.interpolate_property(self, "position", position, rotationTargets[currentTarget].get_global_position(), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
 		tween.start()
-		print(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
-		HUD.update_movement_points(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
+		#print(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
+		#HUD.update_movement_points(abs(position.x) + abs(rotationTargets[currentTarget].get_global_position().x) + abs(position.y) + abs(rotationTargets[currentTarget].get_global_position().y))
 
 func _on_Area2D_area_entered(area):
 	rotationTargets.clear()

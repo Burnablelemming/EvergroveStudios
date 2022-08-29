@@ -1,0 +1,2 @@
+I want a GUI to hover on the bottom of the screen with a opaque background.
+This sounds simple, but I have found it to be difficult
