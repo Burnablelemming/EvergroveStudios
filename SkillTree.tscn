@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://SkillTree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/64x64/fist_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/64x64/root.png" type="Texture" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://Assets/64x64/player.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TargetSprite.png" type="Texture" id=6]
@@ -41,7 +42,19 @@ current = true
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="start"]
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="start"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "The Shape of Your Soul"
+
+[node name="Desc" type="Label" parent="start"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "This is the root of your power."
 
 [node name="attackOne" type="Area2D" parent="start"]
 position = Vector2( 114, 63 )
