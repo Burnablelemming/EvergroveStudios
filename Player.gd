@@ -32,7 +32,7 @@ func _physics_process(_delta):
 				currentTarget = 0
 			else:
 				currentTarget += 1
-		print("Current target: ", currentTarget, rotationTargets[currentTarget].get_global_position())
+		#print("Current target: ", currentTarget, rotationTargets[currentTarget].get_global_position())
 #		look_at(rotationTargets[currentTarget].get_global_position())
 
 		tween.interpolate_property(self, "rotation", rotation, position.angle_to_point(rotationTargets[currentTarget].get_global_position()), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)

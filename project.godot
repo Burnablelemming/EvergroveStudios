@@ -15,7 +15,7 @@ run/main_scene="res://SkillTree.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [global]
 
@@ -84,3 +84,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true
