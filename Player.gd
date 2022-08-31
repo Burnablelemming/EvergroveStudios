@@ -35,7 +35,19 @@ func _physics_process(_delta):
 		#print("Current target: ", currentTarget, rotationTargets[currentTarget].get_global_position())
 #		look_at(rotationTargets[currentTarget].get_global_position())
 
-		tween.interpolate_property(self, "rotation", rotation, position.angle_to_point(rotationTargets[currentTarget].get_global_position()), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+		var angle = position.angle_to_point(rotationTargets[currentTarget].get_global_position())
+		
+		# The adjusts the angles so the tween will rotate the shortest distance, appears to work fine if angle > rotation. Checks to see if distance is > PI
+		if angle < rotation and abs(angle - rotation) > PI:
+			# handles -rotation to -angle and adjusts angle to positive
+			if angle < 0:
+				angle = abs(abs(angle) - 2*PI)
+				
+			#handles +angle +rotation and adjusts rotation to negative
+			else:
+				rotation = rotation - 2*PI
+
+		tween.interpolate_property(self, "rotation", rotation, angle, 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 		tween.start()
 #
 	if Input.is_action_just_pressed("ui_accept"):
