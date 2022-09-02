@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Legacy"
-run/main_scene="res://SkillTree.tscn"
+run/main_scene="res://Level.tscn"
 
 [editor_plugins]
 
