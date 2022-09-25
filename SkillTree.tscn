@@ -56,6 +56,8 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "This is the root of your power."
 
+[node name="Node" type="Node" parent="start/Desc"]
+
 [node name="attackOne" type="Area2D" parent="start"]
 position = Vector2( 114, 63 )
 
