@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://SkillTree.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/SkillTree.gd" type="Script" id=1]
 [ext_resource path="res://Assets/64x64/fist_1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/64x64/root.png" type="Texture" id=3]
-[ext_resource path="res://Player.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://Assets/64x64/player.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TargetSprite.png" type="Texture" id=6]
 [ext_resource path="res://Assets/shoe_1.png" type="Texture" id=7]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/attack_3.png" type="Texture" id=13]
 [ext_resource path="res://Assets/64x64/fist_2.png" type="Texture" id=14]
 [ext_resource path="res://Assets/64x64/fist_3.png" type="Texture" id=15]
+
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 16 )
