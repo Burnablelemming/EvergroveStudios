@@ -10,11 +10,10 @@ const ZERO = 0
 
 #1, 10 are way to fucking slow
 #100 is a bit fast
-export var speed = 1
+export var speed = 5
+export var friction = 15
+export var maxAcceleration = 75
 
-
-export var maxAcceleration = 100
-export var friction = 1
 var acceleration = 0
 
 #describes the last direction the player was traveling in
