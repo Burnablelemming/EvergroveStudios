@@ -13,6 +13,7 @@ const ZERO = 0
 export var speed = 5
 export var friction = 15
 export var maxAcceleration = 75
+export var jumpForce = 50
 
 var acceleration = 0
 
@@ -33,6 +34,10 @@ func _physics_process(_delta):
 	elif Input.is_action_pressed("ui_left"):
 		if acceleration > (-maxAcceleration):
 			acceleration -= speed
+	elif Input.is_action_just_pressed("ui_up"):
+		move_and_slide(Vector2(0,jumpForce))
+		print("jumping")
+		
 	else:
 		if acceleration < 0:
 			acceleration += friction
