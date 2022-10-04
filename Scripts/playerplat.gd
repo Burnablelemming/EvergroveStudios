@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 #Export Variables
 #1, 10, 30 are way to fucking slow
 # is a bit slow
