@@ -35,7 +35,7 @@ func _physics_process(_delta):
 			acceleration.x -= speed
 		anim.play("walkLeft")
 	else:
-		anim.play("Idle")
+		anim.play("idleRight")
 		applyFriction()
 	if Input.is_action_just_pressed("ui_up") and acceleration.y == 0:
 		acceleration.y = jumpForce
