@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Assets/Tilemaps/32x32/Grasslands.png" type="Texture" id=1]
+[ext_resource path="res://assets/Tilemaps/32x32/Grasslands.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
