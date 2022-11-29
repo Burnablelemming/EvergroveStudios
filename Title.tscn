@@ -1,16 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/themes/DarkTheme/Fonts/MerriweatherSans-VariableFont_wght.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/themes/DarkTheme/Dark.theme" type="Theme" id=2]
+[ext_resource path="res://assets/themes/Legacy/Fonts/Head1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/themes/Legacy/Dark.theme" type="Theme" id=2]
+[ext_resource path="res://scripts/Title.gd" type="Script" id=3]
+[ext_resource path="res://assets/backgrounds/test.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=1511]
-size = 20
-font_data = ExtResource( 1 )
+[sub_resource type="GDScript" id=1]
+script/source = "extends ParallaxBackground
+
+func _process(_delta):
+	scroll_base_offset -= Vector2(1,0)
+"
 
 [node name="Title" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="VBC" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -19,26 +25,36 @@ grow_horizontal = 2
 
 [node name="LBTitle" type="Label" parent="VBC"]
 margin_top = -1.0
-margin_right = 86.0
-margin_bottom = 31.4
-custom_fonts/font = SubResource( 1511 )
+margin_right = 137.4
+margin_bottom = 56.4
+custom_fonts/font = ExtResource( 1 )
 text = "Legacy"
 align = 1
 
 [node name="BTNStart" type="Button" parent="VBC"]
-margin_top = 35.0
-margin_right = 86.0
-margin_bottom = 71.0
+margin_top = 60.0
+margin_right = 137.0
+margin_bottom = 109.0
 text = "Start"
 
 [node name="BTNOptions" type="Button" parent="VBC"]
-margin_top = 74.0
-margin_right = 86.0
-margin_bottom = 110.0
+margin_top = 112.0
+margin_right = 137.0
+margin_bottom = 161.0
 text = "Options"
 
 [node name="BTNExit" type="Button" parent="VBC"]
-margin_top = 113.0
-margin_right = 86.0
-margin_bottom = 149.0
+margin_top = 164.0
+margin_right = 137.0
+margin_bottom = 213.0
 text = "Exit"
+
+[node name="background" type="ParallaxBackground" parent="."]
+script = SubResource( 1 )
+
+[node name="layer1" type="ParallaxLayer" parent="background"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="spr1" type="Sprite" parent="background/layer1"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
