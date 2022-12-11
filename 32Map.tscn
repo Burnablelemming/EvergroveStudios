@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://du42tlextlgpg"]
 
-[ext_resource type="Texture2D" uid="uid://ww7kytnfbrui" path="res://assets/Tilemaps/32x32/Grasslands.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b8or2btnrsrb2" path="res://assets/Tilemaps/32x32/Grasslands.png" id="1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2po4"]
 resource_name = "Grasslands"
