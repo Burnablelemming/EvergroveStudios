@@ -1,0 +1,5 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://crg32wbgfme6d" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://du42tlextlgpg" path="res://scenes/32Map.tscn" id="5"]

@@ -5,7 +5,6 @@ const ZERO = 0
 @onready var spr = $spr
 @onready var anim = $anim
 
-
 var gravity = 30
 var speed = 20
 var friction = 20
@@ -13,7 +12,7 @@ var maxAcceleration = 180
 
 #Jump-specific vars
 var jumpHold = -1
-var jumpBurst = -400
+var jumpBurst = -300
 var jumpMax = -10
 var jumpCur = 0
 
@@ -28,17 +27,15 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-	#Left and right movement
 	if Input.is_action_pressed("ui_right"):
 		if(acceleration.x + speed) <= maxAcceleration:
 			acceleration.x += speed
-		anim.play("walkRight")
+		anim.play("walk_right")
 	elif Input.is_action_pressed("ui_left"):
 		if(acceleration.x - speed) >= -maxAcceleration:
 			acceleration.x -= speed
-		anim.play("walkLeft")
-	else:
-		anim.play("idleRight")
+	else:             
+		anim.play("idle")
 		applyFriction()
 	
 	#FIXME - You can kinda float checked your way up

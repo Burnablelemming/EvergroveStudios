@@ -1,1 +1,7 @@
+Camera2D
 TileMap
+CollisionShape2D
+AnimationPlayer
+Sprite2D
+AnimatedSprite2D
+CharacterBody2D
