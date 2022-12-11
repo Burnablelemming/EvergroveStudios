@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/themes/Legacy/Fonts/Head1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/themes/Legacy/Fonts/Head1.tres" type="FontFile" id=1]
 [ext_resource path="res://assets/themes/Legacy/Dark.theme" type="Theme" id=2]
 [ext_resource path="res://scripts/Title.gd" type="Script" id=3]
-[ext_resource path="res://assets/backgrounds/test.png" type="Texture" id=4]
+[ext_resource path="res://assets/backgrounds/test.png" type="Texture2D" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
@@ -24,29 +24,29 @@ anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="LBTitle" type="Label" parent="VBC"]
-margin_top = -1.0
-margin_right = 137.4
-margin_bottom = 56.4
+offset_top = -1.0
+offset_right = 137.4
+offset_bottom = 56.4
 custom_fonts/font = ExtResource( 1 )
 text = "Legacy"
 align = 1
 
 [node name="BTNStart" type="Button" parent="VBC"]
-margin_top = 60.0
-margin_right = 137.0
-margin_bottom = 109.0
+offset_top = 60.0
+offset_right = 137.0
+offset_bottom = 109.0
 text = "Start"
 
 [node name="BTNOptions" type="Button" parent="VBC"]
-margin_top = 112.0
-margin_right = 137.0
-margin_bottom = 161.0
+offset_top = 112.0
+offset_right = 137.0
+offset_bottom = 161.0
 text = "Options"
 
 [node name="BTNExit" type="Button" parent="VBC"]
-margin_top = 164.0
-margin_right = 137.0
-margin_bottom = 213.0
+offset_top = 164.0
+offset_right = 137.0
+offset_bottom = 213.0
 text = "Exit"
 
 [node name="background" type="ParallaxBackground" parent="."]
@@ -55,6 +55,6 @@ script = SubResource( 1 )
 [node name="layer1" type="ParallaxLayer" parent="background"]
 motion_mirroring = Vector2( 1920, 0 )
 
-[node name="spr1" type="Sprite" parent="background/layer1"]
+[node name="spr1" type="Sprite2D" parent="background/layer1"]
 position = Vector2( 960, 540 )
 texture = ExtResource( 4 )

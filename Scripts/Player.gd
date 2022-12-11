@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const ZERO = 0
 
-onready var spr = $spr
-onready var anim = $anim
+@onready var spr = $spr
+@onready var anim = $anim
 
 
 var gravity = 30
@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		anim.play("idleRight")
 		applyFriction()
 	
-	#FIXME - You can kinda float on your way up
+	#FIXME - You can kinda float checked your way up
 	#if acceleration.y is a positive number you are going down
 	if Input.is_action_just_pressed("ui_up") and acceleration.y == 0:
 		acceleration.y = jumpBurst
@@ -61,8 +61,12 @@ func _physics_process(_delta):
 
 
 	#TODO - Explain why these are different
-	acceleration = move_and_slide(acceleration)
-	#move_and_slide(acceleration)
+	set_velocity(acceleration)
+	move_and_slide()
+	acceleration = velocity
+	set_velocity(acceleration)
+	move_and_slide()
+	#velocity
 	
 func applyFriction():
 	#print("was called")
