@@ -3,23 +3,6 @@
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_bdrsc"]
 [ext_resource type="Texture2D" uid="uid://dvp4sy71jt16b" path="res://assets/characters/knight/knight_all_v1.png" id="1_onjpg"]
 
-[sub_resource type="Animation" id="Animation_eb71i"]
-resource_name = "walk_right"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spr:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
 [sub_resource type="Animation" id="Animation_hjjut"]
 length = 0.001
 tracks/0/type = "value"
@@ -52,6 +35,23 @@ tracks/0/keys = {
 "values": [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
 }
 
+[sub_resource type="Animation" id="Animation_eb71i"]
+resource_name = "walk_right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q73t0"]
 _data = {
 "RESET": SubResource("Animation_hjjut"),
@@ -62,7 +62,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7ouo"]
 size = Vector2(23, 32)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="chara" type="CharacterBody2D"]
 script = ExtResource("1_bdrsc")
 
 [node name="spr" type="Sprite2D" parent="."]

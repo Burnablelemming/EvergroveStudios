@@ -2,25 +2,33 @@ extends CharacterBody2D
 
 const ZERO = 0
 
-@onready var spr = $spr
-@onready var anim = $anim
+@onready var spr:Sprite2D = $spr
+@onready var anim:AnimationPlayer = $anim
+@onready var chara:CharacterBody2D = get_node(".")
 
-var gravity = 30
-var speed = 20
-var friction = 20
-var maxAcceleration = 180
+#Gravity defines how fast you fall
+#Speed is how fast you reach max speed
+#Friction is how fast you stop moving
+#maxAcceleration is how fast you can possible move horizontally
+var gravity = 1
+var normalForce = -1
+var speed = 40
+var friction = 40
+var maxHorizontalAcceleration = 200
+
+var maxDownwardAcceleration = -200
+var maxUpwardAcceleration = 200 
 
 #Jump-specific vars
-var jumpHold = -1
-var jumpBurst = -300
-var jumpMax = -10
-var jumpCur = 0
+var jumpBurst = -100
+var jumpHold = 0
+var jumpHoldMax = 200
 
 #describes the last direction the player was traveling in
 var lastDirection : String
 var acceleration = Vector2(0,0)
 
-#Debug Variables###############################################################
+#Debug Variables
 var currentPlayerMovement : Vector2
 
 func _ready():
@@ -28,43 +36,44 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
-		if(acceleration.x + speed) <= maxAcceleration:
+		if(acceleration.x + speed) <= maxHorizontalAcceleration:
 			acceleration.x += speed
+		spr.flip_h = false
 		anim.play("walk_right")
 	elif Input.is_action_pressed("ui_left"):
-		if(acceleration.x - speed) >= -maxAcceleration:
+		if(acceleration.x - speed) >= -maxHorizontalAcceleration:
 			acceleration.x -= speed
+		spr.flip_h = true
+		anim.play("walk_right")
 	else:             
 		anim.play("idle")
 		applyFriction()
-	
-	#FIXME - You can kinda float checked your way up
-	#if acceleration.y is a positive number you are going down
-	if Input.is_action_just_pressed("ui_up") and acceleration.y == 0:
-		acceleration.y = jumpBurst
-	if Input.is_action_pressed("ui_up"):
-		if(acceleration.y > 0):
-			acceleration.y += gravity
-		elif(jumpCur >= jumpMax):
-			acceleration.y += jumpHold
-			jumpCur += jumpHold
-			print("Cur Jump = ", jumpCur, "maxJump = ", jumpMax)
-		else:
-			acceleration.y += gravity
-		print(acceleration)
-	else:
-		jumpCur = 0
-		acceleration.y += gravity
 
+	#JUMPING CODE
+	if Input.is_action_pressed("ui_up"):
+		if(chara.is_on_floor()):
+			acceleration.y += jumpBurst
+		jumpHold = jumpHold + 1
+		print("Holding", jumpHold)
+	else:	
+		print("released")
+		if(chara.is_on_floor() == false):
+				acceleration.y += gravity
+		else:
+			while(acceleration.y != 0):
+				acceleration.y += normalForce
 
 	#TODO - Explain why these are different
+#	set_velocity(acceleration)
+#	move_and_slide()
+#	acceleration = velocity
+#	set_velocity(acceleration)
+#	move_and_slide()
+
 	set_velocity(acceleration)
+	#print(velocity)
 	move_and_slide()
-	acceleration = velocity
-	set_velocity(acceleration)
-	move_and_slide()
-	#velocity
-	
+
 func applyFriction():
 	#print("was called")
 	#If player is moving
