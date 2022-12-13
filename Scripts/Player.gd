@@ -10,8 +10,8 @@ const ZERO = 0
 #Speed is how fast you reach max speed
 #Friction is how fast you stop moving
 #maxAcceleration is how fast you can possible move horizontally
-var gravity = 1
-var normalForce = -1
+var gravity = 20
+var normalForce = -20
 var speed = 40
 var friction = 40
 var maxHorizontalAcceleration = 200
@@ -20,9 +20,21 @@ var maxDownwardAcceleration = -200
 var maxUpwardAcceleration = 200 
 
 #Jump-specific vars
-var jumpBurst = -100
+
+#The force of the initial jump (no hold, one tap)
+var jumpBurst = -275
+
+
 var jumpHold = 0
-var jumpHoldMax = 200
+
+#Max time value until you run out of boost
+var jumpHoldMax = 15
+
+#How much the timer incriments each frame (probably dont need to touch)
+var jumpHoldIncri = 1
+
+#How many pixels you actually move
+var jumpBoost = -20
 
 #describes the last direction the player was traveling in
 var lastDirection : String
@@ -35,6 +47,9 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
+	move_and_stuff()
+	apply_gravity_normal()
+	
 	if Input.is_action_pressed("ui_right"):
 		if(acceleration.x + speed) <= maxHorizontalAcceleration:
 			acceleration.x += speed
@@ -52,41 +67,41 @@ func _physics_process(_delta):
 	#JUMPING CODE
 	if Input.is_action_pressed("ui_up"):
 		if(chara.is_on_floor()):
+			jumpHold = 0
 			acceleration.y += jumpBurst
-		jumpHold = jumpHold + 1
-		print("Holding", jumpHold)
-	else:	
-		print("released")
-		if(chara.is_on_floor() == false):
-				acceleration.y += gravity
+			print("burst achieved")
 		else:
-			while(acceleration.y != 0):
+			if(jumpHold < jumpHoldMax):
+				print("boosting", jumpHold)
+				acceleration.y += jumpBoost
+				jumpHold += jumpHoldIncri
+			else:
+				print("out of boost")
+	
+func apply_gravity_normal():
+	if(chara.is_on_floor() == false):
+			acceleration.y += gravity
+			print("Gravity", acceleration)
+	else:
+		while(acceleration.y != 0):
+			if(acceleration.y + normalForce < 0):
+				acceleration.y = 0
+				print("Normal Reset")
+			else:	
 				acceleration.y += normalForce
+				print("Normal", acceleration)
+				
+	#gravity must be a constant force, otherwise you can just never let accel.y decrease
 
-	#TODO - Explain why these are different
-#	set_velocity(acceleration)
-#	move_and_slide()
-#	acceleration = velocity
-#	set_velocity(acceleration)
-#	move_and_slide()
-
+func move_and_stuff():
 	set_velocity(acceleration)
-	#print(velocity)
 	move_and_slide()
 
 func applyFriction():
-	#print("was called")
-	#If player is moving
 	if acceleration.x != 0:
-		#print("accel not zero")
-		#Player was moving right
 		if acceleration.x > 0:
-			#print("moving right")
 			acceleration.x -= friction
-		#Player was moving left
 		elif acceleration.x < 0:
-			#print("moving right")
 			acceleration.x += friction
-	#accel was zero
 	else:
 		return

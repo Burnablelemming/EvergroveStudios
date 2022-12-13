@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cx7hg5k1kl0wt"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_bdrsc"]
-[ext_resource type="Texture2D" uid="uid://dvp4sy71jt16b" path="res://assets/characters/knight/knight_all_v1.png" id="1_onjpg"]
+[ext_resource type="Texture2D" uid="uid://ciu0dyhabakci" path="res://assets/characters/knight/knight_all_v1.png" id="1_onjpg"]
 
 [sub_resource type="Animation" id="Animation_hjjut"]
 length = 0.001
