@@ -24,7 +24,7 @@ var maxUpwardAcceleration = 200
 #The force of the initial jump (no hold, one tap)
 var jumpBurst = -275
 
-
+########
 var jumpHold = 0
 
 #Max time value until you run out of boost
@@ -39,9 +39,6 @@ var jumpBoost = -20
 #describes the last direction the player was traveling in
 var lastDirection : String
 var acceleration = Vector2(0,0)
-
-#Debug Variables
-var currentPlayerMovement : Vector2
 
 func _ready():
 	pass
@@ -61,22 +58,23 @@ func _physics_process(_delta):
 		spr.flip_h = true
 		anim.play("walk_right")
 	else:             
-		anim.play("idle")
+		#anim.play("idle")
 		applyFriction()
-
-	#JUMPING CODE
+		
+		
 	if Input.is_action_pressed("ui_up"):
 		if(chara.is_on_floor()):
 			jumpHold = 0
 			acceleration.y += jumpBurst
-			print("burst achieved")
 		else:
 			if(jumpHold < jumpHoldMax):
-				print("boosting", jumpHold)
 				acceleration.y += jumpBoost
 				jumpHold += jumpHoldIncri
 			else:
 				print("out of boost")
+		print("should be playing anim")
+		anim.play("jump")
+	
 	
 func apply_gravity_normal():
 	if(chara.is_on_floor() == false):
@@ -91,7 +89,7 @@ func apply_gravity_normal():
 				acceleration.y += normalForce
 				print("Normal", acceleration)
 				
-	#gravity must be a constant force, otherwise you can just never let accel.y decrease
+	#gravity must be a constant force, otherwise you can just never let accel.y decrease by holding the buttons
 
 func move_and_stuff():
 	set_velocity(acceleration)
