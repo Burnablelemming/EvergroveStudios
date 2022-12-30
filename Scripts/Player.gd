@@ -58,7 +58,7 @@ func _physics_process(_delta):
 		spr.flip_h = true
 		anim.play("walk_right")
 	else:             
-		#anim.play("idle")
+		anim.play("idle")
 		applyFriction()
 		
 		
