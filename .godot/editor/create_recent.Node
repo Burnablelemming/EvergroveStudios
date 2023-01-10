@@ -1,3 +1,6 @@
+RichTextLabel
+NinePatchRect
+TextureRect
 Camera2D
 TileMap
 CollisionShape2D
