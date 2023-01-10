@@ -1,4 +1,6 @@
 RichTextLabel
+TextEdit
+Label
 NinePatchRect
 TextureRect
 Camera2D
