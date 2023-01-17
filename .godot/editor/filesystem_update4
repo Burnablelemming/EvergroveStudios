@@ -1,4 +1,4 @@
 res://scenes/player.tscn
-res://scripts/Player.gd
+res://assets/themes/Legacy/Dark.theme
 res://scenes/32_map.tscn
 res://scenes/world.tscn
