@@ -51,14 +51,14 @@ func _physics_process(_delta):
 		if(acceleration.x + speed) <= maxHorizontalAcceleration:
 			acceleration.x += speed
 		spr.flip_h = false
-		anim.play("walk_right")
+		#anim.play("walk_right")
 	elif Input.is_action_pressed("ui_left"):
 		if(acceleration.x - speed) >= -maxHorizontalAcceleration:
 			acceleration.x -= speed
 		spr.flip_h = true
-		anim.play("walk_right")
+		#anim.play("walk_right")
 	else:             
-		anim.play("idle")
+		#anim.play("idle")
 		applyFriction()
 		
 		
@@ -73,7 +73,7 @@ func _physics_process(_delta):
 			else:
 				print("out of boost")
 		print("should be playing anim")
-		anim.play("jump")
+		#anim.play("jump")
 	
 	
 func apply_gravity_normal():

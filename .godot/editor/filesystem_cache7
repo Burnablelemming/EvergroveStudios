@@ -1,5 +1,5 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1673382544
+::res://::1674242880
 export_presets.cfg::TextFile::-1::1668406264::0::1::::<><>::
 ::res://assets/::1672446663
 ::res://assets/backgrounds/::1670651455
@@ -7,7 +7,8 @@ clouds.png::CompressedTexture2D::4714324144326679699::1669579936::1670651455::1:
 mountains.png::CompressedTexture2D::248076594543098693::1669580035::1670651455::1::::<><>::
 sky.png::CompressedTexture2D::6458349588890720926::1669579816::1670651455::1::::<><>::
 test.png::CompressedTexture2D::6642189725827709335::1669579093::1670651455::1::::<><>::
-::res://assets/characters/::1670888006
+::res://assets/characters/::1674243115
+SlimeBoy.png::CompressedTexture2D::8864490340902970727::1674243115::1674243116::1::::<><>::
 ::res://assets/characters/hallo_guy/::1670888032
 Halloween Guy Bouncy walk.png::CompressedTexture2D::1948726117111612267::1670888006::1670888032::1::::<><>::
 Halloween Guy.png::CompressedTexture2D::687989722935142025::1670888006::1670888032::1::::<><>::
@@ -27,9 +28,9 @@ noBKG_KnightShield_strip.png::CompressedTexture2D::4130123239694438833::16708880
 ::res://assets/environments/::1669012885
 ::res://assets/palettes/::1669496829
 ::res://assets/themes/::1669576246
-::res://assets/themes/Legacy/::1673382925
-Dark.theme::Theme::923654433460151226::1673381718::0::1::::<><>::res://assets/themes/Legacy/StyleBox/ButtonDisabled.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonFocus.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonHover.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonNormal.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonPressed.stylebox<>uid://ddnbmiktoqvuj<>uid://ukujs4gvxvev<>uid://c8e3u1an4i0nb<>uid://b148vop87vfe4<>uid://bc4cyherjx1pt<>uid://34x6ehbgi0g8<>uid://b33x8obt0sw8j<>uid://dqa0h67xrqvkr<>res://assets/themes/Legacy/StyleBox/Panel.stylebox<>uid://dvol3g7w8k4uy
-::res://assets/themes/Legacy/Fonts/::1673383437
+::res://assets/themes/Legacy/::1673398510
+Dark.theme::Theme::923654433460151226::1673398510::0::1::::<><>::uid://dsivsoereiobc<>res://assets/themes/Legacy/StyleBox/ButtonDisabled.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonFocus.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonHover.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonNormal.stylebox<>res://assets/themes/Legacy/StyleBox/ButtonPressed.stylebox<>uid://ddnbmiktoqvuj<>uid://ukujs4gvxvev<>uid://c8e3u1an4i0nb<>uid://b148vop87vfe4<>uid://bc4cyherjx1pt<>uid://34x6ehbgi0g8<>uid://b33x8obt0sw8j<>uid://dqa0h67xrqvkr<>res://assets/themes/Legacy/StyleBox/Panel.stylebox<>uid://dvol3g7w8k4uy
+::res://assets/themes/Legacy/Fonts/::1673383518
 pixel.ttf::FontFile::8440484202018946044::1673381125::1673383518::1::::<><>::
 ::res://assets/themes/Legacy/Icons/::1670651455
 CheckedBox.png::CompressedTexture2D::7396748075833283525::1602183478::1670651455::1::::<><>::
@@ -53,20 +54,21 @@ Panel.stylebox::StyleBoxFlat::-1::1669495140::0::1::::<><>::
 Grasslands.png::CompressedTexture2D::1591532962842692524::1668743278::1670899236::1::::<><>::
 home.png::CompressedTexture2D::3121214318946207187::1669499508::1670899236::1::::<><>::
 temperate.png::CompressedTexture2D::6264125481372313917::1672378267::1671056969::1::::<><>::
-::res://assets/UIElements/::1672448221
+::res://assets/UIElements/::1674005467
 testing.png::CompressedTexture2D::2038893879321996656::1672448220::1672448221::1::::<><>::
-::res://music/::1673379408
+::res://music/::1674242881
+BattleMarch.mp3::AudioStreamMP3::8872253004991571835::1673975491::1674242881::1::::<><>::
 FirstSong.mp3::AudioStreamMP3::1588897025588788731::1668236367::1670651455::1::::<><>::
 Fl Studio Tutorial Videos.txt::TextFile::-1::1672378115::0::1::::<><>::
 Fun With G Minor.mp3::AudioStreamMP3::5194616901940544633::1673379382::1673379408::1::::<><>::
 MusicTutorial(HowToMixAudio).txt::TextFile::-1::1670563463::0::1::::<><>::
 NightBytheLake.mp3::AudioStreamMP3::2364646259348816281::1670888006::1670651455::1::::<><>::
 SoonToBeNamed.mp3::AudioStreamMP3::8017515204762032076::1673379382::1673379408::1::::<><>::
-::res://scenes/::1673381718
-32_map.tscn::PackedScene::5289047757070416001::1673379422::0::1::::<><>::uid://ww7kytnfbrui<>uid://cvinh4uan1p78
+::res://scenes/::1674243094
+32_map.tscn::PackedScene::5289047757070416001::1674243094::0::1::::<><>::uid://ww7kytnfbrui<>uid://cvinh4uan1p78
 ParallaxBackground.tscn::PackedScene::-1::1670651443::0::1::::<><>::res://assets/backgrounds/test.png
-player.tscn::PackedScene::6453682185247349275::1673379422::0::1::::<><>::res://scripts/Player.gd<>uid://ciu0dyhabakci
-world.tscn::PackedScene::5712824489206393391::1673381718::0::1::::<><>::uid://chmb3xpqij51n<>uid://cx7hg5k1kl0wt
+player.tscn::PackedScene::6453682185247349275::1674243094::0::1::::<><>::res://scripts/Player.gd
+world.tscn::PackedScene::5712824489206393391::1674243094::0::1::::<><>::uid://chmb3xpqij51n<>uid://cx7hg5k1kl0wt<>uid://dsivsoereiobc
 ::res://scripts/::1672378267
 Level.gd::GDScript::-1::1670651443::0::1::::<>Node2D<>::
 Player.gd::GDScript::-1::1672378267::0::1::::<>CharacterBody2D<>::
